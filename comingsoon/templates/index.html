@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bgimg {
+  background-image: url("{% static 'background.jpg' %}");
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}
+
+.topmiddle {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}
+
+ .middle {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+hr {
+  margin: auto;
+  width: 40%;
+}
+</style>
+<body>
+
+<div class="bgimg">
+  <div class="topmiddle">
+    <h3>Logo</h3>
+  </div>
+  <div class="middle">
+    <h1>COMING SOON</h1>
+    <hr>
+    <p id="demo" style="font-size:30px"></p>
+  </div>
+
+</div>
+
+<script>
+// Définir la date de fin
+var dtCountDown = new Date("Oct 2, 2020 23:59:59").getTime();
+
+// Mettre à jour le countdown à chaque seconde
+var countdownfunction = setInterval(function() {
+
+  // Récupérer les date heure actuelle
+  var now = new Date().getTime();
+
+  // Ecart entre 'now' et la date de fin du countdown
+  var distance = dtCountDown - now;
+
+  // Calculs pour chaque intervalle de temps
+  var jours = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var heures = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var secondes = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Afficher le résulter dans la balise où id="demo"
+  document.getElementById("demo").innerHTML = jours + "j " + heures + "h "
+  + minutes + "m " + secondes + "s ";
+
+  // Optionnel : A la fin du countdown, mettre un message
+  if (distance < 0) {
+    clearInterval(countdownfunction);
+    document.getElementById("demo").innerHTML = "Nous y sommes, c'est le jour J !";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
