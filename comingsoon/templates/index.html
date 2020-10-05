@@ -66,10 +66,10 @@ var dtCountDown = new Date("Oct 2, 2020 23:59:59").getTime();
 // Mettre à jour le countdown à chaque seconde
 var countdownfunction = setInterval(function() {
 
-  // Récupérer les date heure actuelle
+  // Récupérer les date et heure actuels
   var now = new Date().getTime();
 
-  // Ecart entre 'now' et la date de fin du countdown
+  // Calculer écart entre 'now' et la date de fin du countdown
   var distance = dtCountDown - now;
 
   // Calculs pour chaque intervalle de temps
@@ -78,11 +78,11 @@ var countdownfunction = setInterval(function() {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var secondes = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Afficher le résulter dans la balise où id="demo"
+  // Afficher le résultat dans la balise où id="demo"
   document.getElementById("demo").innerHTML = jours + "j " + heures + "h "
   + minutes + "m " + secondes + "s ";
 
-  // Optionnel : A la fin du countdown, mettre un message
+  // Optionnel : à la fin du countdown, mettre un message
   if (distance < 0) {
     clearInterval(countdownfunction);
     document.getElementById("demo").innerHTML = "Nous y sommes, c'est le jour J !";
